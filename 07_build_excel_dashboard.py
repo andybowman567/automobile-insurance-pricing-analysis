@@ -1643,7 +1643,10 @@ with pd.ExcelWriter(
 
     dashboard.insert_chart(
         "G19",
-        bonus_chart
+        bonus_chart,
+        {
+            "x_offset": 60
+        }
     )
 
 
@@ -1851,7 +1854,10 @@ with pd.ExcelWriter(
 
     dashboard.insert_chart(
         "G36",
-        validation_chart
+        validation_chart,
+        {
+            "x_offset": 60
+        }
     )
 
 
