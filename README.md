@@ -45,7 +45,7 @@ The workbook contains five business-facing worksheets: **Model Summary, Segment 
 
 ---
 
-# Project Highlights
+## Project Highlights
 
 - Analyzed **678,013 automobile insurance policies**
 - Modeled approximately **358,000 policy-years of exposure**
@@ -65,7 +65,7 @@ The workbook contains five business-facing worksheets: **Model Summary, Segment 
 
 ---
 
-# Business Objective
+## Business Objective
 
 The project was designed to address several core actuarial pricing questions:
 
@@ -82,7 +82,7 @@ The overall objective is to demonstrate an end-to-end actuarial pricing workflow
 
 ---
 
-# Dataset
+## Dataset
 
 The project uses the **freMTPL2 French Motor Third-Party Liability insurance dataset** accessed through OpenML.
 
@@ -110,7 +110,7 @@ The severity dataset contains individual insurance claim amounts associated with
 
 ---
 
-## Initial Portfolio Statistics
+### Initial Portfolio Statistics
 
 | Metric | Result |
 |---|---:|
@@ -135,11 +135,11 @@ Because the frequency and severity source files do not fully reconcile, the €1
 
 ---
 
-# Project Workflow
+## Project Workflow
 
 The project is organized into seven Python scripts.
 
-## 1. Data Exploration and Validation
+### 1. Data Exploration and Validation
 
 `01_data_exploration.py`
 
@@ -159,7 +159,7 @@ This script:
 
 ---
 
-## 2. Frequency Modeling
+### 2. Frequency Modeling
 
 `02_frequency_model.py`
 
@@ -181,7 +181,7 @@ The model includes variables such as:
 
 ---
 
-## 3. Severity Modeling
+### 3. Severity Modeling
 
 `03_severity_model.py`
 
@@ -195,7 +195,7 @@ Claim count is used as an observation weight so policies contributing multiple c
 
 ---
 
-## 4. Final Pricing Model
+### 4. Final Pricing Model
 
 `04_pricing_model.py`
 
@@ -219,7 +219,7 @@ It also exports the model results used by the Excel reporting workflow.
 
 ---
 
-## 5. Combined Model Validation
+### 5. Combined Model Validation
 
 `05_model_validation.py`
 
@@ -242,7 +242,7 @@ The script also exports a summary file containing the major validation statistic
 
 ---
 
-## 6. Presentation Charts
+### 6. Presentation Charts
 
 `06_create_charts.py`
 
@@ -258,7 +258,7 @@ Generated charts include:
 
 ---
 
-## 7. Automated Excel Dashboard
+### 7. Automated Excel Dashboard
 
 `07_build_excel_dashboard.py`
 
@@ -285,25 +285,25 @@ This removes the need to manually retype model results into Excel.
 
 ---
 
-# Data Validation and Cleaning
+## Data Validation and Cleaning
 
 Before modeling, the source data were reviewed for data-quality issues and extreme observations.
 
 ---
 
-## Missing Values
+### Missing Values
 
 No missing values were identified in the original frequency or severity variables used in the analysis.
 
 ---
 
-## Duplicate Policy IDs
+### Duplicate Policy IDs
 
 No duplicate policy IDs were identified in the frequency dataset.
 
 ---
 
-## Exposure
+### Exposure
 
 Observed policy exposure ranged from approximately:
 
@@ -318,7 +318,7 @@ For modeling purposes:
 
 ---
 
-## Claim Counts
+### Claim Counts
 
 Observed claim counts ranged from:
 
@@ -333,7 +333,7 @@ This reduces the influence of a small number of extreme claim-count records.
 
 ---
 
-## Claim Severity
+### Claim Severity
 
 The individual claim amounts were strongly right-skewed.
 
@@ -356,7 +356,7 @@ This limits the influence of extremely large individual observations while retai
 
 ---
 
-# Frequency and Severity Dataset Reconciliation
+## Frequency and Severity Dataset Reconciliation
 
 The frequency and severity source files do not reconcile perfectly.
 
@@ -384,7 +384,7 @@ This avoids comparing complete frequency information against incomplete severity
 
 ---
 
-# Exploratory Risk Segmentation
+## Exploratory Risk Segmentation
 
 Before fitting the multivariate models, exposure-adjusted claim frequency was examined across several major rating characteristics.
 
@@ -392,7 +392,7 @@ These analyses are **univariate associations** and should not be interpreted as 
 
 ---
 
-## Driver Age
+### Driver Age
 
 Observed claim frequency was highest among younger drivers.
 
@@ -410,7 +410,7 @@ The 18-24 group displayed substantially higher raw claim frequency than most old
 
 ---
 
-## Bonus-Malus
+### Bonus-Malus
 
 Bonus-Malus is an experience-rating measure associated with prior insurance claims experience.
 
@@ -427,7 +427,7 @@ Higher Bonus-Malus categories generally displayed higher raw claim frequency.
 
 ---
 
-## Vehicle Age
+### Vehicle Age
 
 | Vehicle Age | Claims per 100 Policy-Years | Raw Frequency Relativity |
 |---|---:|---:|
@@ -444,7 +444,7 @@ This demonstrates the importance of distinguishing **univariate segmentation** f
 
 ---
 
-## Geographic Density
+### Geographic Density
 
 Observed claim frequency generally increased with population density.
 
@@ -460,7 +460,7 @@ This suggested that geographic density could provide useful predictive informati
 
 ---
 
-# Poisson Claim Frequency Model
+## Poisson Claim Frequency Model
 
 A Poisson regression model was developed to estimate expected claim frequency.
 
@@ -488,7 +488,7 @@ The data were divided into:
 
 ---
 
-## Frequency Model Results
+### Frequency Model Results
 
 | Metric | Result |
 |---|---:|
@@ -507,7 +507,7 @@ The predicted aggregate test frequency was also close to the observed test frequ
 
 ---
 
-# Adjusted Frequency Relativities
+## Adjusted Frequency Relativities
 
 Adjusted frequency relativities were calculated by changing one rating characteristic while holding the remaining policy characteristics constant.
 
@@ -515,7 +515,7 @@ This provides a different interpretation from raw univariate segmentation.
 
 ---
 
-## Driver Age
+### Driver Age
 
 Base group:
 
@@ -535,7 +535,7 @@ The large raw difference observed for younger drivers was substantially reduced 
 
 ---
 
-## Vehicle Age
+### Vehicle Age
 
 Base group:
 
@@ -552,7 +552,7 @@ Base group:
 
 ---
 
-## Bonus-Malus
+### Bonus-Malus
 
 Base group:
 
@@ -571,7 +571,7 @@ Bonus-Malus retained meaningful frequency differentiation after controlling for 
 
 ---
 
-# Gamma Claim Severity Model
+## Gamma Claim Severity Model
 
 A Gamma regression model was developed to estimate expected claim severity conditional on a claim occurring.
 
@@ -585,7 +585,7 @@ Claim count is used as an observation weight.
 
 ---
 
-## Severity Model Results
+### Severity Model Results
 
 | Metric | Result |
 |---|---:|
@@ -602,7 +602,7 @@ The Gamma model produced lower out-of-sample deviance than the constant-severity
 
 ---
 
-# Policy-Level Expected Loss Cost
+## Policy-Level Expected Loss Cost
 
 The final pricing framework combines the frequency and severity models.
 
@@ -620,7 +620,7 @@ Each policy receives:
 
 ---
 
-## Full Portfolio Model Results
+### Full Portfolio Model Results
 
 | Metric | Result |
 |---|---:|
@@ -645,7 +645,7 @@ Therefore, modeled pure premium should **not** be interpreted as a final charged
 
 ---
 
-# Model-Based Pricing Relativities
+## Model-Based Pricing Relativities
 
 Policy-level predictions were aggregated across major portfolio segments.
 
@@ -659,7 +659,7 @@ They should not be interpreted as isolated causal effects.
 
 ---
 
-## Driver Age Pricing
+### Driver Age Pricing
 
 | Driver Age | Predicted Pure Premium | Pricing Relativity |
 |---|---:|---:|
@@ -677,7 +677,7 @@ The 18-24 group produced one of the highest modeled expected loss costs.
 
 ---
 
-## Vehicle Age Pricing
+### Vehicle Age Pricing
 
 | Vehicle Age | Predicted Pure Premium | Pricing Relativity |
 |---|---:|---:|
@@ -692,7 +692,7 @@ Vehicle age produced less modeled pricing differentiation after accounting for o
 
 ---
 
-## Bonus-Malus Pricing
+### Bonus-Malus Pricing
 
 | Bonus-Malus | Predicted Pure Premium | Pricing Relativity |
 |---|---:|---:|
@@ -709,7 +709,7 @@ Higher Bonus-Malus categories generally produced higher modeled loss costs.
 
 ---
 
-## Geographic Density Pricing
+### Geographic Density Pricing
 
 | Density Group | Predicted Pure Premium | Pricing Relativity |
 |---|---:|---:|
@@ -725,7 +725,7 @@ Higher-density segments generally produced higher modeled expected loss costs.
 
 ---
 
-# Combined Model Validation
+## Combined Model Validation
 
 The combined frequency-severity pricing framework was evaluated using a separate holdout sample.
 
@@ -733,7 +733,7 @@ Because the original frequency and severity datasets do not perfectly reconcile,
 
 ---
 
-## Validation Sample
+### Validation Sample
 
 | Metric | Result |
 |---|---:|
@@ -742,7 +742,7 @@ Because the original frequency and severity datasets do not perfectly reconcile,
 
 ---
 
-## Frequency Validation
+### Frequency Validation
 
 | Metric | Result |
 |---|---:|
@@ -753,7 +753,7 @@ Because the original frequency and severity datasets do not perfectly reconcile,
 
 ---
 
-## Severity Validation
+### Severity Validation
 
 | Metric | Result |
 |---|---:|
@@ -762,7 +762,7 @@ Because the original frequency and severity datasets do not perfectly reconcile,
 
 ---
 
-## Pure Premium Validation
+### Pure Premium Validation
 
 | Metric | Result |
 |---|---:|
@@ -771,7 +771,7 @@ Because the original frequency and severity datasets do not perfectly reconcile,
 
 ---
 
-## Total Loss Validation
+### Total Loss Validation
 
 | Metric | Result |
 |---|---:|
@@ -788,7 +788,7 @@ This indicates that the model provides meaningful risk differentiation but could
 
 ---
 
-# Tweedie Model Performance
+## Tweedie Model Performance
 
 Combined pure-premium performance was evaluated using Tweedie deviance with:
 
@@ -804,7 +804,7 @@ The combined pricing framework produced lower holdout Tweedie deviance than the 
 
 ---
 
-# Risk-Decile Analysis
+## Risk-Decile Analysis
 
 Validation policies were ranked by predicted pure premium and divided into ten approximately equal-sized groups.
 
@@ -852,7 +852,7 @@ This suggests the model compresses risk differentiation and underpredicts some o
 
 ---
 
-# Ordered Lorenz Curve and Gini
+## Ordered Lorenz Curve and Gini
 
 An ordered Lorenz curve was used to evaluate the model's ability to rank policies by underlying loss risk.
 
@@ -866,7 +866,7 @@ A positive ordered Gini indicates that the model provides useful risk discrimina
 
 ---
 
-# Automated Excel Pricing Dashboard
+## Automated Excel Pricing Dashboard
 
 The final business-facing deliverable is created by:
 
@@ -886,23 +886,23 @@ The workbook contains five worksheets:
 
 ---
 
-## Dashboard Features
+### Dashboard Features
 
-### Full Portfolio KPIs
+#### Full Portfolio KPIs
 
 - Number of policies
 - Total modeled exposure
 - Predicted claim frequency
 - Predicted pure premium
 
-### Holdout Validation KPIs
+#### Holdout Validation KPIs
 
 - Actual pure premium
 - Predicted pure premium
 - Loss prediction error
 - Ordered Gini coefficient
 
-### Pricing and Validation Charts
+#### Pricing and Validation Charts
 
 - Predicted pure premium by driver age
 - Predicted pure premium by Bonus-Malus
@@ -911,7 +911,7 @@ The workbook contains five worksheets:
 
 ---
 
-## Automated Reporting Workflow
+### Automated Reporting Workflow
 
 The reporting process is:
 
@@ -945,7 +945,7 @@ This allows the model and reporting workflow to be rerun without manually re-ent
 
 ---
 
-# Presentation Charts
+## Presentation Charts
 
 `06_create_charts.py` creates the major project visualizations.
 
@@ -968,9 +968,9 @@ These charts are intended for:
 
 ---
 
-# Installation and Reproduction
+## Installation and Reproduction
 
-## Requirements
+### Requirements
 
 The project uses the following Python packages:
 
@@ -994,7 +994,7 @@ A Python virtual environment is recommended.
 
 ---
 
-## Running the Project
+### Running the Project
 
 Run the scripts in the following order:
 
@@ -1012,7 +1012,7 @@ The source insurance data are retrieved from OpenML, so the raw datasets do not 
 
 ---
 
-## Generated Outputs
+### Generated Outputs
 
 The pricing and validation scripts generate files in:
 
@@ -1034,7 +1034,7 @@ results/Automobile_Insurance_Pricing_Analysis.xlsx
 
 ---
 
-# Project Structure
+## Project Structure
 
 ```text
 Actuarial_Pricing_Project/
@@ -1069,7 +1069,7 @@ Actuarial_Pricing_Project/
 
 ---
 
-# Files Intentionally Excluded from GitHub
+## Files Intentionally Excluded from GitHub
 
 Two large policy-level generated files are excluded through `.gitignore`:
 
@@ -1086,7 +1086,7 @@ The repository retains the smaller summary files required to review the results.
 
 ---
 
-# `.gitignore`
+## `.gitignore`
 
 The project `.gitignore` excludes:
 
@@ -1100,9 +1100,9 @@ The summary results, charts, Python code, README, and final Excel workbook remai
 
 ---
 
-# Tools Used
+## Tools Used
 
-## Python
+### Python
 
 - pandas
 - NumPy
@@ -1110,7 +1110,7 @@ The summary results, charts, Python code, README, and final Excel workbook remai
 - scikit-learn
 - XlsxWriter
 
-## Excel
+### Excel
 
 - Formula-driven actuarial summaries
 - Pricing relativity tables
@@ -1122,7 +1122,7 @@ The summary results, charts, Python code, README, and final Excel workbook remai
 
 ---
 
-# Actuarial Methods Demonstrated
+## Actuarial Methods Demonstrated
 
 - Policy exposure
 - Claim frequency
@@ -1147,9 +1147,9 @@ The summary results, charts, Python code, README, and final Excel workbook remai
 
 ---
 
-# Key Findings
+## Key Findings
 
-## 1. Bonus-Malus Provides Meaningful Risk Differentiation
+### 1. Bonus-Malus Provides Meaningful Risk Differentiation
 
 Higher Bonus-Malus groups generally experienced higher claim frequencies and higher modeled expected loss costs.
 
@@ -1160,7 +1160,7 @@ For example:
 
 ---
 
-## 2. Driver Age Shows Meaningful Loss-Cost Differences
+### 2. Driver Age Shows Meaningful Loss-Cost Differences
 
 The modeled pure premium for drivers aged 18-24 was approximately:
 
@@ -1174,7 +1174,7 @@ for drivers aged 40-49.
 
 ---
 
-## 3. Geographic Density Contributes to Risk Segmentation
+### 3. Geographic Density Contributes to Risk Segmentation
 
 Very-high-density areas produced modeled pure premium of approximately:
 
@@ -1188,7 +1188,7 @@ for very-low-density areas.
 
 ---
 
-## 4. Multivariate Modeling Changes the Interpretation of Raw Segmentation
+### 4. Multivariate Modeling Changes the Interpretation of Raw Segmentation
 
 Several large differences observed in the raw exploratory analysis became substantially smaller after controlling for other policy characteristics.
 
@@ -1200,7 +1200,7 @@ This demonstrates why actuarial pricing analysis should distinguish between:
 
 ---
 
-## 5. The Model Demonstrates Meaningful Risk Ranking
+### 5. The Model Demonstrates Meaningful Risk Ranking
 
 The highest predicted-risk decile experienced approximately:
 
@@ -1216,7 +1216,7 @@ These results indicate that the model provides useful risk discrimination.
 
 ---
 
-## 6. Calibration Can Be Improved
+### 6. Calibration Can Be Improved
 
 The combined model underpredicted holdout total losses by approximately:
 
@@ -1228,7 +1228,7 @@ This provides a clear area for future model development.
 
 ---
 
-# Model Limitations
+## Model Limitations
 
 This project is an actuarial portfolio analysis and modeling demonstration rather than a production insurance rating plan.
 
@@ -1250,7 +1250,7 @@ Model results should therefore be interpreted as analytical pricing indications 
 
 ---
 
-# Potential Future Improvements
+## Potential Future Improvements
 
 Possible extensions include:
 
@@ -1274,7 +1274,13 @@ These extensions could improve both calibration and risk discrimination.
 
 ---
 
-# Conclusion
+## License
+
+This project's original code is released under the [MIT License](LICENSE). The underlying freMTPL2 insurance data remain subject to their original source terms and are not relicensed by this repository.
+
+---
+
+## Conclusion
 
 This project demonstrates a complete actuarial pricing workflow:
 
