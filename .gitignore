@@ -1,0 +1,16 @@
+#Python virtual environment
+.venv/
+
+#Python cache files
+__pycache__/
+*.pyc
+
+#PyCharm project settings
+.idea/
+
+#macOS files
+.DS_Store
+
+#Large generated policy-level outputs
+results/policy_pricing_results.csv
+results/model_validation_policy_results.csv
