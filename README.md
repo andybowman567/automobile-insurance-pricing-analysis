@@ -12,6 +12,10 @@ An end-to-end actuarial pricing portfolio project built on **678,013 automobile 
 
 The workbook contains five business-facing worksheets: **Model Summary, Segment Pricing, Validation, Dashboard, and Methodology**.
 
+## Dashboard Preview
+
+![Automobile Insurance Pricing Dashboard](charts/dashboard_preview.png)
+
 ## At a Glance
 
 | Metric | Result |
