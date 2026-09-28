@@ -1,16 +1,30 @@
 # Automobile Insurance Pricing Analysis
 
-## Python Frequency-Severity Modeling and Automated Excel Pricing Dashboard
+### Python Frequency-Severity Modeling + Automated Excel Pricing Dashboard
 
-This project develops an end-to-end automobile insurance pricing framework using **Python and Excel** to analyze claim frequency, claim severity, expected loss costs, risk segmentation, and pricing relativities across approximately **678,000 automobile insurance policies**.
+An end-to-end actuarial pricing portfolio project built on **678,013 automobile insurance policies**. The analysis separates claim frequency and claim severity using **Poisson** and **Gamma** regression models, combines those predictions into policy-level pure premiums, validates performance on holdout data, and publishes the results to an automated Excel pricing dashboard.
 
-The project follows a traditional actuarial frequency-severity framework:
+**Core stack:** Python · pandas · scikit-learn · Matplotlib · XlsxWriter · Excel
 
-**Expected Loss Cost = Expected Claim Frequency × Expected Claim Severity**
+## Final Deliverable
 
-A **Poisson generalized linear model** is used to estimate claim frequency and a **Gamma generalized linear model** is used to estimate claim severity. The two models are combined to estimate policy-level pure premiums and expected losses.
+**[Open the automated Excel pricing workbook](results/Automobile_Insurance_Pricing_Analysis.xlsx)**
 
-The project concludes with holdout validation, risk-decile analysis, an ordered Gini coefficient, presentation-quality charts, and an **automated Excel pricing dashboard generated directly from Python model outputs**.
+The workbook contains five business-facing worksheets: **Model Summary, Segment Pricing, Validation, Dashboard, and Methodology**.
+
+## At a Glance
+
+| Metric | Result |
+|---|---:|
+| Policies analyzed | 678,013 |
+| Modeled exposure | 358,360.11 policy-years |
+| Predicted pure premium | €193.84 |
+| Holdout loss prediction error | -8.74% |
+| Ordered Gini | 0.2497 |
+
+## Quick Navigation
+
+[Project Workflow](#project-workflow) · [Frequency Model](#poisson-claim-frequency-model) · [Severity Model](#gamma-claim-severity-model) · [Validation](#combined-model-validation) · [Excel Dashboard](#automated-excel-pricing-dashboard) · [Reproduce the Project](#installation-and-reproduction)
 
 ---
 
