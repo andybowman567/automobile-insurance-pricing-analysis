@@ -26,6 +26,23 @@ The workbook contains five business-facing worksheets: **Model Summary, Segment 
 
 [Project Workflow](#project-workflow) · [Frequency Model](#poisson-claim-frequency-model) · [Severity Model](#gamma-claim-severity-model) · [Validation](#combined-model-validation) · [Excel Dashboard](#automated-excel-pricing-dashboard) · [Reproduce the Project](#installation-and-reproduction)
 
+## Selected Results
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="charts/driver_age_pricing.png" alt="Predicted pure premium by driver age">
+    </td>
+    <td width="50%">
+      <img src="charts/actual_vs_predicted_risk_decile.png" alt="Actual versus predicted pure premium by risk decile">
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Modeled pure premium by driver age</b></td>
+    <td align="center"><b>Holdout actual vs. predicted pure premium by risk decile</b></td>
+  </tr>
+</table>
+
 ---
 
 # Project Highlights
